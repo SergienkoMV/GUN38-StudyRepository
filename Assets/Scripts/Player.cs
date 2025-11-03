@@ -21,8 +21,9 @@ namespace Netologia.Homework
 		private void Update()
 		{
 			if (!_ready) return;
-			if (Input.GetKey(KeyCode.Space))
+			if (Input.GetKeyDown(KeyCode.Space))
 			{
+				print("Space");
 				StartCoroutine(Reloader());
 				_ball.isKinematic = false;
 				_ball.transform.parent = null;
