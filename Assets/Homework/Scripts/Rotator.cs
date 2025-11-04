@@ -15,14 +15,15 @@ public class Rotator : MonoBehaviour
         _rigidbody = FindObjectOfType<Rigidbody>();
         while (true)
         {
-            _rigidbody.rotation = Quaternion.Euler(_rigidbody.rotation * _rotate);
+            //_rigidbody.rotation = Quaternion.Euler(_rigidbody.rotation * _rotate);
             yield break;
+            //_rigidbody.RotateAround();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Rotate(_rotate);
     }
 }

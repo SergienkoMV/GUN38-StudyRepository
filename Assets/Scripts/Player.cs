@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Netologia.Homework
 {
@@ -18,12 +19,14 @@ namespace Netologia.Homework
 		[SerializeField]
 		private float _respawnDelay;
 
+		[SerializeField]
+		private Transform _firePoint;
+
 		private void Update()
 		{
 			if (!_ready) return;
 			if (Input.GetKeyDown(KeyCode.Space))
 			{
-				print("Space");
 				StartCoroutine(Reloader());
 				_ball.isKinematic = false;
 				_ball.transform.parent = null;
@@ -41,7 +44,8 @@ namespace Netologia.Homework
 
 		private void Spawn()
 		{
-			_ball = Instantiate(_ballPrefab, transform);
+			_ball = Instantiate(_ballPrefab, _firePoint);
+			_ball.transform.localScale = Vector3.one;
 			_ball.isKinematic = true;
 			_ready = true;
 		}

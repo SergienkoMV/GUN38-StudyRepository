@@ -6,10 +6,12 @@ using UnityEngine;
 
 public class Gates : MonoBehaviour
 {
+    private int _score = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        Debug.Log("Score: " + _score);
     }
 
     // Update is called once per frame
@@ -23,7 +25,8 @@ public class Gates : MonoBehaviour
         if (other.gameObject.TryGetComponent<Ball>(out var ball))
         {
             Destroy(ball);
-            Console.WriteLine("Goal");
+            _score += 1;
+            Debug.Log("Score: " + _score);
         }
     }
 }
