@@ -17,6 +17,13 @@ public class NewMover : MonoBehaviour
 
     private bool _moveForvard = true;
 
+    private Rigidbody _rigidbody;
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
     private IEnumerator Start()
     {
         var time = 0f;
@@ -25,11 +32,11 @@ public class NewMover : MonoBehaviour
             
             if (_moveForvard)
             {
-                transform.position = Vector3.Lerp(_start, _end, /*_speed **/ time / _moveTime);
+                _rigidbody.MovePosition(Vector3.Lerp(_start, _end, /*_speed **/ time / _moveTime));
             }
             else
             {
-                transform.position = Vector3.Lerp(_end, _start, /*_speed **/ time / _moveTime);
+                _rigidbody.MovePosition(Vector3.Lerp(_end, _start, /*_speed **/ time / _moveTime));
             }
             
             time += Time.deltaTime;

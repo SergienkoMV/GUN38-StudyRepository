@@ -7,22 +7,25 @@ public class Rotator : MonoBehaviour
     private Vector3 _rotate;
     private Rigidbody _rigidbody;
 
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
     private IEnumerator Start()
     {
-        _rigidbody = FindObjectOfType<Rigidbody>();
+        
         while (true)
         {
-            //_rigidbody.rotation = Quaternion.Euler(_rigidbody.rotation * _rotate);
-
-            //var angle = transform.eulerAngles;
-            //angle += _rotate * Time.deltaTime;
-            yield break;
-            //_rigidbody.RotateAround();
+            Vector3 rotation = _rotate * Time.fixedDeltaTime;
+            Quaternion rotationQuaternion = Quaternion.Euler(rotation);
+            _rigidbody.MoveRotation(_rigidbody.rotation * rotationQuaternion);
+            yield return new WaitForFixedUpdate();
         }
     }
 
     void Update()
     {
-        transform.Rotate(_rotate);
+        //transform.Rotate(_rotate);
     }
 }
