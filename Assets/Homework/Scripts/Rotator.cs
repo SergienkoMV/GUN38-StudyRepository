@@ -1,7 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class Rotator : MonoBehaviour
 {
@@ -9,19 +7,20 @@ public class Rotator : MonoBehaviour
     private Vector3 _rotate;
     private Rigidbody _rigidbody;
 
-    // Start is called before the first frame update
     private IEnumerator Start()
     {
         _rigidbody = FindObjectOfType<Rigidbody>();
         while (true)
         {
             //_rigidbody.rotation = Quaternion.Euler(_rigidbody.rotation * _rotate);
+
+            //var angle = transform.eulerAngles;
+            //angle += _rotate * Time.deltaTime;
             yield break;
             //_rigidbody.RotateAround();
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.Rotate(_rotate);

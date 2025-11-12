@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Netologia.Homework
 {
@@ -45,7 +44,6 @@ namespace Netologia.Homework
 		private void Spawn()
 		{
 			_ball = Instantiate(_ballPrefab, _firePoint);
-			_ball.transform.localScale = Vector3.one;
 			_ball.isKinematic = true;
 			_ready = true;
 		}

@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class NewMover : MonoBehaviour
@@ -27,11 +25,11 @@ public class NewMover : MonoBehaviour
             
             if (_moveForvard)
             {
-                transform.position = Vector3.Lerp(_start, _end, _speed * time / _moveTime);
+                transform.position = Vector3.Lerp(_start, _end, /*_speed **/ time / _moveTime);
             }
             else
             {
-                transform.position = Vector3.Lerp(_end, _start, _speed * time / _moveTime);
+                transform.position = Vector3.Lerp(_end, _start, /*_speed **/ time / _moveTime);
             }
             
             time += Time.deltaTime;
@@ -42,7 +40,13 @@ public class NewMover : MonoBehaviour
                 yield return new WaitForSeconds(_delay);
             }
 
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(_start, _end);
     }
 }
