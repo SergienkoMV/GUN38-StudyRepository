@@ -1,18 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CellManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Cell[] _cells;
+    
     void Start()
     {
-        
+        _cells = FindObjectsOfType<Cell>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         
     }
+
+    public event Action<Cell> OnCellClicked;
+
+    //public void OnCellClicked(Cell cell)
+    //{
+
+    //}
 }
