@@ -1,4 +1,4 @@
-enum NeighbourType
+public enum NeighbourType
 {
     left,
     right, 
